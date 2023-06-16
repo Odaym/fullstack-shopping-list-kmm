@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 
-val kotlinVersion = "1.7.20-Beta"
+val kotlinVersion = "1.8.20"
 val serializationVersion = "1.3.3"
 val ktorVersion = "2.0.3"
 val logbackVersion = "1.2.11"
@@ -65,6 +65,7 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation(project.dependencies.enforcedPlatform("org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom:$kotlinWrappersVersion"))
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom")
             }
         }
@@ -73,6 +74,7 @@ kotlin {
 
 application {
     mainClass.set("ServerKt")
+    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
 
 // include JS artifacts in any JAR we generate
